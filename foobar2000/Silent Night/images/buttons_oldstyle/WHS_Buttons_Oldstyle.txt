@@ -1,0 +1,131 @@
+﻿// ==PREPROCESSOR==
+// @name "Silent Night - Buttons with Pop Up Menu"
+// @author "arnie77 & tedGo"
+// @import "%fb2k_path%Silent Night\scripts\Silent Script.js"
+// ==/PREPROCESSOR==
+var imgPath = fb.FoobarPath + "Silent Night\\images\\buttons_oldstyle\\";
+
+var a = {normal: imgPath + "bt-prev-off.png", hover: imgPath + "bt-prev-on.png"};
+var b = {normal: imgPath + "bt-prev-off2.png", hover: imgPath + "bt-prev-on.png"};
+
+var c = {normal: imgPath + "bt-play-off.png", hover: imgPath + "bt-play-on.png"};
+var d = {normal: imgPath + "bt-pause-off.png", hover: imgPath + "bt-pause-on.png"};
+
+var e = {normal: imgPath + "bt-next-off.png", hover: imgPath + "bt-next-on.png"};
+var f = {normal: imgPath + "bt-next-off2.png", hover: imgPath + "bt-next-on.png"};
+
+function createPreButton() {
+    return new Button( 0, 0, 29, 21, fb.IsPlaying ? a : b, function () {fb.RunMainMenuCommand("Playback/Previous");});
+}
+
+function createPlaButton() {
+	return new Button( 29, 0, 33, 21, fb.IsPlaying && !fb.IsPaused ? d : c, function () {fb.RunMainMenuCommand("Playback/Play or Pause");});
+}
+
+function createNexButton() {
+    return new Button( 62, 0, 29, 21, fb.IsPlaying ? e : f, function () {fb.RunMainMenuCommand("Playback/Next");});
+}
+
+Buttons.A = createPreButton();
+Buttons.B = createPlaButton();
+Buttons.C = createNexButton();
+
+// ----- CREATE MENU -----------------------------------------------
+function on_mouse_rbtn_down(x, y) {
+	var basemenu = window.CreatePopupMenu();
+    var ret;
+    
+	var g = window.CreatePopupMenu();
+	var idx;
+
+	g.AppendMenuItem(0, 1, "Stop After Current");
+    g.CheckMenuRadioItem(0, 1, fb.StopAfterCurrent);
+
+	g.AppendMenuItem(0, 2, "Stop");
+    g.AppendMenuItem(2048, 0, 0);
+	g.AppendMenuItem(0, 3, "Next");
+    g.AppendMenuItem(0, 4, "Previous");
+    g.AppendMenuItem(2048, 0, 0);
+    
+	if(!fb.IsPaused & fb.IsPlaying) {
+        g.AppendMenuItem(0, 5, "Pause");
+        } else {
+            g.AppendMenuItem(0, 6, "Play");
+            }
+
+    idx = g.TrackPopupMenu(x, y);
+
+	switch (true) {
+        
+        case (idx == 1):
+			fb.RunMainMenuCommand("Playback/Stop After Current");
+			break;
+
+        case (idx == 2):
+			fb.Stop();
+			break;
+            
+        case (idx == 3):
+			fb.Next();
+			break;
+            
+        case (idx == 4):
+			fb.Prev();
+			break;
+            
+        case (idx == 5):
+			fb.Pause();
+			break;
+            
+        case (idx == 6):
+			fb.Play();
+			break;
+            
+	}
+            
+	g.Dispose();
+	return true;
+}
+
+// ----- EVENTS ----------------------------------------------------
+
+function on_playback_pause(state) {
+    Buttons.A = createPreButton();
+    Buttons.B = createPlaButton();
+    Buttons.C = createNexButton();
+    Buttons.A.repaint();
+    Buttons.B.repaint();
+    Buttons.C.repaint();
+}
+
+function on_playback_play(state) {
+    Buttons.A = createPreButton();
+    Buttons.B = createPlaButton();
+    Buttons.C = createNexButton();
+    Buttons.A.repaint();
+    Buttons.B.repaint();
+    Buttons.C.repaint();
+}
+
+function on_playback_stop(state) {
+    Buttons.A = createPreButton();
+    Buttons.B = createPlaButton();
+    Buttons.C = createNexButton();
+    Buttons.A.repaint();
+    Buttons.B.repaint();
+    Buttons.C.repaint();
+}
+
+function on_playback_edited() {
+    Buttons.A = createPreButton();
+    Buttons.B = createPlaButton();
+    Buttons.C = createNexButton();
+    Buttons.A.repaint();
+    Buttons.B.repaint();
+    Buttons.C.repaint();
+}
+
+// ----- DRAW ------------------------------------------------------
+function on_paint(gr) {
+	buttonsDraw(gr);
+}

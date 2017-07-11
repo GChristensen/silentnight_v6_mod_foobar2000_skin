@@ -1,0 +1,155 @@
+Hello Foobar Freak ;-)
+
+______________________________________
+
+SILENT NIGHT V5 FOR FB2K 1+
+
+by arnie77.deviantart.com
+______________________________________
+
+here are some helpfull Filter Codes...
+
+
+______________________________________
+
+Album List Libary Filter
+______________________________________
+
+
+%path% HAS 128 Bit
+
+%genre% HAS House
+
+%artist% HAS Moby
+
+%bitrate% HAS 320
+
+%filename_ext% HAS .wav
+
+%length%  GREATER 01:00:00
+
+[HH:]MM:SS. 
+
+%channels%  EQUAL joint stereo
+
+%channels%  HAS Mono
+
+%genre% MISSING
+
+%artist% MISSING
+
+%codec_profile% HAS VBR
+
+genre EQUAL House
+
+Tag Rating...
+
+$meta(rating) GREATER 0
+$meta(rating) EQUAL 1
+
+--------------------------------------
+Replay Gain
+--------------------------------------
+
+%replaygain_track_gain% PRESENT
+
+%replaygain_album_peak% PRESENT
+
+--------------------------------------
+Playback Statistics
+--------------------------------------
+foo_playcount.dll
+
+
+AFTER, BEFORE, SINCE, 
+DURING, DURING LAST
+
+%added% DURING LAST 4 WEEKS
+%added% DURING LAST 3 DAYS
+%added% DURING LAST 10 DAYS SORT BY %added%
+%added% SINCE 2008-04
+
+%rating% GREATER 0
+%rating% EQUAL 1
+
+%play_count% LESS 1
+
+%first_played%
+
+%last_played%
+
+--------------------------------------
+Custom Database
+--------------------------------------
+foo_customdb.dll
+
+
+%RATING_CD% GREATER 0
+%RATING_CD% EQUAL 1
+
+%MOOD_DB% EQUAL 1
+
+%LASTFM_LOVED_DB% EQUAL 1
+
+ADDED_CD
+
+PLAY_COUNT_CD
+
+______________________________________
+
+Libary Search
+______________________________________
+
+
+%added% DURING LAST 1 WEEK SORT DESCENDING BY %added%
+
+%added% DURING LAST 2 WEEKS SORT DESCENDING BY %added%
+
+%added% DURING LAST 2 WEEKS SORT DESCENDING BY %artist%
+
+%added% DURING LAST 5 WEEKS SORT ASCENDING BY %artist%
+
+never played...
+%play_count% LESS 1 SORT DESCENDING BY %added%
+
+the most played
+%play_count% GREATER 0 SORT DESCENDING BY %play_count%
+
+read more here...
+Query Syntax Help.html
+(in your foobar2000 directory)
+
+______________________________________
+
+Commandline
+______________________________________
+
+foobar 2000 parameters
+
+foobar2000.exe /play
+foobar2000.exe /pause
+foobar2000.exe /playpause
+foobar2000.exe /prev
+foobar2000.exe /next
+foobar2000.exe /rand
+foobar2000.exe /stop
+foobar2000.exe /show
+foobar2000.exe /hide
+foobar2000.exe /config
+
+foobar2000.exe "/command:Play or pause"
+foobar2000.exe "/command:Choose output device"
+
+//selected
+foobar2000.exe "/playlist_command:Open containing folder"
+//playing
+foobar2000.exe "/playing_command:Open containing folder"
+
+//works only with foo_runcmd.dll component
+foobar2000.exe /"runcmd-playing=Playback Statistics/Rating/1"
+foobar2000.exe /"runcmd-playing=Playback Statistics/Rating/2"
+foobar2000.exe /"runcmd-playing=Playback Statistics/Rating/3"
+foobar2000.exe /"runcmd-playing=Playback Statistics/Rating/4"
+foobar2000.exe /"runcmd-playing=Playback Statistics/Rating/5"
+foobar2000.exe /"runcmd-playing=Playback Statistics/Rating/1"
+foobar2000.exe /"runcmd-playing=Playback Statistics/Rating/<not set>"

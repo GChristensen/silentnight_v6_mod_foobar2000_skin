@@ -1,0 +1,171 @@
+Custom Database v0.1.0_beta1 for foobar2000 1.0.x
+Copyright (C) 2009 kandata <admin@99ravens.net>
+http://www.99ravens.net/
+配布元
+http://blog.99ravens.net/index.php?e=283
+サポートBBS
+http://www.99ravens.net/foobar2000/bbs/
+
+□概要
+
+	外部データベース(SQLite)に情報を保存するコンポーネントです。
+	foo_custominfoのデータベース(SQLite)と互換性があります。
+
+□動作環境
+
+	テストはWindowsXP SP3+foobar2000 v1.0で行っています。
+	以前のバージョンでは動かないかもしれません。
+
+□使い方
+
+	Preferences -> Tools -> Custom Database で設定して下さい。
+
+	他のコンポーネントのグローバル変数と重複している場合は正常に動作しない可能性があるので便宜変更して下さい。
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+□設定項目の説明
+
+	『Fieldsタブ』
+
+		【Display】プロパティシートに表示される名称
+
+		【Name】フィールド名(変数名)
+
+		【Key】レコード追加時のキー情報
+
+			・Location　ファイルのフルパスをキーにします。(foo_custominfo互換)
+			・Custom　任意の情報をキーにします。(TF使用可)
+				例えば %album% としておけばアルバム単位でレコードを作成できます。
+
+	『Actionタブ』
+
+		【Display】コンテキストメニューに表示される名称
+
+		【Field】フィールド名
+
+		【Update】更新方法
+
+			・Contextmenu　「Set value」の値で更新
+			・Contextmenu -> Dialog　入力ダイアログを表示する(初期値は「Set value」の値になります)
+			・Contextmenu -> Erase　データベースにレコードが存在する場合は削除します
+			・Playback　Timingで設定したタイミングに「Set value」の値で更新
+			・Playback (auto count up)　曲の約50%を再生した時に「Set value」の値を初期値としてカウントアップ
+			・Media Library (Added)　メディアライブラリへ追加時に「Set value」の値で更新
+			・Media Library (Removed)　メディアライブラリから削除時に「Set value」の値で更新
+			・Media Library (Modified)　メディアライブラリの情報変更時に「Set value」の値で更新
+
+		【Timing】
+
+			UpdateがPlaybackの場合、ここで設定したタイミングでデータを更新します。
+
+		【Seconds】
+
+			UpdateがPlaybackの場合、ここで設定した秒数を再生した後にデータを更新します。
+			もし曲の長さがこの秒数以下の場合は曲の長さ-1秒よりも長く再生した時に更新します。
+
+		【Percentage】
+
+			UpdateがPlaybackの場合、ここで設定した割合を再生した後にデータを更新します。
+
+		【Set value】設定値または初期値(TFが使えます)
+
+			未入力にするとレコードを削除します。
+
+			拡張TF
+				%now% 現在日時をYYYY-MM-DD hh:mm:ssで返します
+
+	『Databaseタブ』
+
+		【Toolセクション】
+
+			・Remove entries without file location
+				ファイルが存在しない場合、レコードを削除します。
+				(KeyがLocationのレコードのみ有効)
+
+			・Remove entries without fields
+				Fieldsタブの一覧に存在しないレコードを削除します。
+
+			・Optimization (vacuum)
+				データベースの最適化を行います。
+
+□foo_custominfoからの移行
+
+	外部データベースにSQLiteを使用している場合は移行できるかもしれません。
+	データベースファイルはfoobar2000の設定フォルダに格納されています。
+	customdb_sqlite.dbというファイル名で作成されているので、foo_custominfoから移行する場合は、
+	custominfo_sqlite.dbをcustomdb_sqlite.dbにコピーして下さい。
+
+□機能追加予定
+
+	・Multivalue対応。
+	・設定のエクスポート／インポート。
+	・グルーピングして合計、平均を出す。
+	・(0.0.3)Playbackの50%設定を任意の値に変更できるようにする。
+	・(0.0.2)Set valueのTFで現在時刻変数を使えるようにする。 → %now%
+	・(0.0.2)データベースから不要なレコードを自動削除。
+	・(0.0.2)プロパティシートに情報を表示する。
+
+□既知のバグ
+
+	今のところありません。
+
+□更新履歴
+
+v0.1.0_beta1 2010/03/04
+	とりあえずSDK-2010-01-19でコンパイル。
+	SQLite3のバージョンを3.6.14から3.6.22に変更。
+
+v0.0.9a 2009/05/09
+	SQLite3のバージョンを3.6.13から3.6.14に変更。
+	その他、細かい修正。
+
+v0.0.9 2009/05/06
+	書き込み処理の高速化。
+	特定の条件でDBが作成できていなかったバグを修正。
+	vacuumした後に読み込めなくなっていたバグを修正。
+
+v0.0.8c 2009/05/01
+	Autoplaylistなどで正常に抽出できなかったバグを修正。
+
+v0.0.8b 2009/05/01
+	起動時に環境によってはクラッシュすることがあったバグを修正。
+	その他、細かい修正。
+
+v0.0.8a 2009/05/01
+	%now%フィールドをmetadb_display_field_providerからtitleformat_hookに変更。
+	その他、細かい修正。
+
+v0.0.8 2009/04/29
+	テーブルのインデックス付けが正常に行われていなかったバグを修正。
+	データ読み込み処理の高速化。
+
+v0.0.7 2009/04/28
+	ActionのUpdateにMedia Library (Added),Media Library (Removed),Media Library (Modified)追加。
+	Timing,Seconds項目追加。
+	それに伴いデフォルト設定を変更。
+
+v0.0.6 2009/04/17
+	SQLiteのバージョンを3.6.11から3.6.13に変更。
+	DBに情報のないフィールドを表示しようとするとメモリーリークするバグを修正。
+
+v0.0.5 2009/03/26
+	起動時に開いているプレイリストに情報が反映されないバグを修正。
+
+v0.0.4 2009/03/13
+	初期設定にFIRST_PLAYED_CD追加。その他、初期設定を変更。
+	その他、細かい修正。
+
+v0.0.3 2009/03/11
+	プレイリストソート時にフリーズしていたバグを修正。
+	Playbackの50%設定を任意の値に変更できるようにした。
+
+v0.0.2 2009/03/10
+	CUIで起動時に落ちていたバグを修正。
+	プロパティシートに情報を表示するようにした。
+	並び順の変更をできないように仕様変更。
+	　→ Contextmenuの並び順・表示・非表示はDisplay->Context Menuで管理して下さい。
+	%now%変数(現在日時をYYYY-MM-DD hh:mm:ssで返す変数)追加。
+	その他、大幅に修正。
+
+v0.0.1 2009/03/08
+	initial release
