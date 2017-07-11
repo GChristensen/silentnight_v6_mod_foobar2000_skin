@@ -1,0 +1,1 @@
+# silentnight_v6_mod_foobar2000_skin
