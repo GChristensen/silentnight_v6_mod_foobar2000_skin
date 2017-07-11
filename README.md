@@ -4,7 +4,7 @@ This is a modification of the original Silent Night V.6 foobar2000 skin by [Arni
 
 The skin could be useful if you prefer a well-structured file-system tree over the media library to access and categorize your music.
 
-[DOWNLOAD](https://github.com/GChristensen/silentnight_v6_mod_foobar2000_skin/releases/download/v1(6.2)/silent_night_mod.zip) | [VIDEO MANUAL](http://youtube.com)
+[DOWNLOAD](https://github.com/GChristensen/silentnight_v6_mod_foobar2000_skin/releases/download/v1(6.2)/silent_night_mod.zip) :: [VIDEO MANUAL](http://youtube.com)
 
 <img src="https://github.com/GChristensen/silentnight_v6_mod_foobar2000_skin/blob/master/screen1.png"/>&nbsp;&nbsp;<img src="https://github.com/GChristensen/silentnight_v6_mod_foobar2000_skin/blob/master/screen2.png"/>
 
@@ -27,5 +27,5 @@ See manuals at the distribution for more details.
 
 ### Known issues
 
-- Horizontal file explorer panel orientation is a little buggy (it's may be necessary to resize window to rid of glitches).
+- Horizontal file explorer panel orientation behaves a little buggy when you hide/show left sidebar (it's may be necessary to resize window to get rid of glitches).
 - Some antivirus may bark at Soundmixer.exe (you may safely delete it).
