@@ -4,7 +4,7 @@ This is a modification of the original Silent Night V.6 foobar2000 skin by [Arni
 
 The skin could be useful if you prefer a well-structured file-system tree over the media library to access and categorize your music.
 
-[DOWNLOAD](https://github.com/GChristensen/silentnight_v6_mod_foobar2000_skin/releases/download/v1(6.2)/silent_night_mod.zip) :: [VIDEO MANUAL](http://youtube.com)
+[DOWNLOAD](https://github.com/GChristensen/silentnight_v6_mod_foobar2000_skin/releases/download/v1(6.2)/silent_night_mod.zip) :: [VIDEO MANUAL](https://youtu.be/2QaeGk9ChKo)
 
 <img src="https://github.com/GChristensen/silentnight_v6_mod_foobar2000_skin/blob/master/screen1.png"/>&nbsp;&nbsp;<img src="https://github.com/GChristensen/silentnight_v6_mod_foobar2000_skin/blob/master/screen2.png"/>
 
@@ -27,5 +27,7 @@ See manuals at the distribution for more details.
 
 ### Known issues
 
-- Horizontal file explorer panel orientation behaves a little buggy when you hide/show left sidebar (it's may be necessary to resize window to get rid of glitches).
+- Horizontally oriented file explorer panel behaves a little buggy when the left sidebar is shown/hidden (it's may be necessary to resize window to get rid of glitches).
 - Some antivirus may bark at Soundmixer.exe (you may safely delete it).
+- Graphical album-cover view works only when media library is configured.
+- To make Speck visualisations work, you need to manually specify Winamp (included into the skin) folder path in plugin settings.
