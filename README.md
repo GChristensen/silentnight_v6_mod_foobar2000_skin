@@ -30,4 +30,4 @@ See manuals at the distribution for more details.
 - Horizontally oriented file explorer panel behaves a little bit buggy when the left sidebar is shown/hidden (it's may be necessary to resize window to get rid of glitches).
 - Some antivirus may bark at Soundmixer.exe (you may safely delete it).
 - Graphical album-cover view works only when media library is configured.
-- To make Speck visualisations work, you need to manually specify Winamp (included into the skin) folder path in plugin settings.
+- To make Shpeck visualisations work, you need to manually specify Winamp (included into the skin) folder path in plugin settings.
