@@ -17,10 +17,10 @@ The skin could be useful if you prefer a well-structured file-system tree over t
 
 WARNING: some services use German language by default (this setting is left unchanged from the original skin).
 
-### Installation: same as for the original Silent Night
+### Installation
 
 - Install foobar2000 using the portable mode with all options (full installation).
-- Merge skin and foobar2000 folders content **before the first foobar launch**.
+- Merge skin and foobar2000 folders **before the first foobar launch**.
 - Select **Columns UI** after the first launch.
 
 See manuals at the distribution for more details.
