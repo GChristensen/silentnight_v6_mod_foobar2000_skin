@@ -60,8 +60,39 @@
                 }
             };
             xhr.open('GET', 'https://api.github.com/repos/gchristensen/silentnight_v6_mod_foobar2000_skin/releases/latest');
-            xhr.send();
+
+            function watch() {
+                document.getElementById('placeholder').style.display='none';
+                document.getElementById('webm').style.display='block';
+                var video = document.querySelector('#webm video');
+                video.play();
+                setTimeout(function () {
+                    document.getElementById('webm').style.display = 'none';
+                    document.getElementById('placeholder').style.display = 'block';
+                }, 42000);
+            }
+
+            setTimeout(function() {
+                if (navigator.userAgent.search("Chrome") >= 0
+                    || navigator.userAgent.search("Firefox") >= 0) {
+
+                    watch();
+                }
+            }, 1000);
         </script>
+
+        <div id="placeholder" style="display: block;">
+            <div style="position: relative; display: table;" onclick="watch()">
+                <!--img title="Watch on Youtube" style="cursor: pointer;" src="/enso-portable/screen.jpg" alt="screen" /-->
+                <img style="cursor: pointer;" src="/silentnight_v6_mod_foobar2000_skin/screen3.jpg" alt="screen"/>
+                <div style="position: absolute; right: 10px; bottom: 10px; color: white; font-weight: bold; cursor: pointer;" onclick="watch()"
+                ><img src="/play_video.png" style="vertical-align: middle; cursor: pointer;"></div>
+            </div>
+        </div>
+
+        <div id="webm" style="display: none;">
+            <video src="/silentnight_v6_mod_foobar2000_skin/silent-night.webm" width="500px" height="281px" type="video/webm" muted />
+        </div>
 
         <p>
         <a href="https://github.com/GChristensen/silentnight_v6_mod_foobar2000_skin/blob/master/screen1.png" target="_blank">
